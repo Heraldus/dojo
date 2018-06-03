@@ -47,4 +47,12 @@ public class DojoTest {
 		Assert.assertEquals("lab C",au.printLabel());
 	}
 
+	@Test public void test_se_solicita_aula_para_arquitectura_metros_cuadrados_y_computadoras(){
+		Cau cau = new Cau();
+		Solicitud solicitud = new Solicitud(new ArrayList<>(Arrays.asList(new Capacity(10),new M2(30),new HasComputers())));
+		Aula au = cau.getSuitableRoom(aulas,solicitud);
+		Assert.assertEquals("lab C",au.printLabel());
+
+	}
+
 }
