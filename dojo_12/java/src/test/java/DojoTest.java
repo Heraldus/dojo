@@ -15,10 +15,12 @@ public class DojoTest {
 	@Before
 	public void setup() {
 		aulas = new ArrayList<>();
-		List<Feature> featuresA = new ArrayList<>(Arrays.asList(new Capacity(5)));
-		List<Feature> featuresB = new ArrayList<>(Arrays.asList(new Capacity(20)));
+		List<Feature> featuresA = new ArrayList<>(Arrays.asList(new Capacity(5),new M2(10)));
+		List<Feature> featuresB = new ArrayList<>(Arrays.asList(new Capacity(20),new M2(20)));
+		List<Feature> featuresC = new ArrayList<>(Arrays.asList(new Capacity(10),new M2(30)));
 		aulas.add(new Aula(featuresA, new Label("lab 1")));
 		aulas.add(new Aula(featuresB,new Label("lab 2")));
+		aulas.add(new Aula(featuresC,new Label("lab C")));
 
 	}
 
@@ -39,8 +41,10 @@ public class DojoTest {
 	}
 
 	@Test public void test_se_solicita_aula_para_arquitectura_metros_cuadrados(){
-
-
+		Cau cau = new Cau();
+		Solicitud solicitud = new Solicitud(new ArrayList<>(Arrays.asList(new Capacity(10),new M2(30))));
+		Aula au = cau.getSuitableRoom(aulas,solicitud);
+		Assert.assertEquals("lab C",au.printLabel());
 	}
 
 }
